@@ -18,3 +18,11 @@ Show Route (GET) - Get one comment (using id) - /comments/:id
 Update Route (PATCH) - Update one comment - /comments/:id
 Delete Route (DELETE) - Destroy one comment - /comments/:id
 */
+
+app.get('/', (req, res) => {
+  res.render('comments/index')
+});
+
+app.listen(3000, () => {
+  console.log('Server starting up!');
+});
