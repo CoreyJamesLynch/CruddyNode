@@ -7,6 +7,17 @@
   </head>
   <body>
     <h1>Comment Index</h1>
-    <% console.log(comments) %>
+    <% for(comment in comments){%> <% let currentComment = comments[comment] %>
+    <p><b> <%= currentComment.username%> says: </b> <%= currentComment.comment %></p>
+    <div style="display: flex">
+      <form action="/comments/<%= comment.id %>/edit?_method=PATCH " method="GET">
+        <button disabled>Edit</button>
+      </form>
+
+      <form action="/comments/<%= comment.id %>/delete?_method=DELETE " method="POST">
+        <button disabled>Delete</button>
+      </form>
+    </div>
+    <% } %>
   </body>
 </html>
