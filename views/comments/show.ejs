@@ -11,5 +11,8 @@
       <p><%= requestedComment.comment %></p>
       <a href="/comments">Back</a>
     </div>
+    <form action="/comments/<%=requestedComment.id%>?_method=DELETE" method="POST">
+      <button>Delete Comment</button>
+    </form>
   </body>
 </html>
