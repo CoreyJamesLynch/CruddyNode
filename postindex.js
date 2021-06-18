@@ -11,14 +11,6 @@ app.use(methodOverride('_method'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-/*
-Index Route (GET) - list all the comments - /comments
-Create Route (POST) - Create a new comment - /comments
-Show Route (GET) - Get one comment (using id) - /comments/:id
-Update Route (PATCH) - Update one comment - /comments/:id
-Delete Route (DELETE) - Destroy one comment - /comments/:id
-*/
-
 let comments = [
   {
     id: uuid(),
@@ -42,17 +34,23 @@ let comments = [
   },
 ];
 
-app.get('/comments', (req, res) => {
-  res.render('comments/index', { comments });
-});
-
 app.get('/comments/show/:id', (req, res) => {
   const { id } = req.params;
   const requestedComment = comments.find((comment) => comment.id === id);
   res.render('comments/show', { requestedComment });
 });
 
-// need to get the form
+// get edit form
+app.get('/comments/edit/:id', (req, res) => {
+  res.render('/comments/edit');
+});
+
+// post edited comment to comments
+
+// delete
+// filter comment from array by it's id
+// redirect back to index page
+
 app.get('/comments/new', (req, res) => {
   res.render('comments/new');
 });
@@ -67,6 +65,10 @@ app.post('/comments', (req, res) => {
   res.redirect('/comments');
 });
 
+app.get('/comments', (req, res) => {
+  res.render('comments/index', { comments });
+});
+
 app.get('/', (req, res) => {
   res.render('comments/home');
 });
@@ -74,3 +76,11 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('Server starting up!');
 });
+
+/*
+Index Route (GET) - list all the comments - /comments
+Create Route (POST) - Create a new comment - /comments
+Show Route (GET) - Get one comment (using id) - /comments/:id
+Update Route (PATCH) - Update one comment - /comments/:id
+Delete Route (DELETE) - Destroy one comment - /comments/:id
+*/
