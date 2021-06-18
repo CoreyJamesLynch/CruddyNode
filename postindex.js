@@ -54,10 +54,18 @@ app.get('/comments/show/:id', (req, res) => {
 
 // need to get the form
 app.get('/comments/new', (req, res) => {
-  res.render('comments/new')
-})
+  res.render('comments/new');
+});
 
-// need to post the form information
+app.post('/comments', (req, res) => {
+  const { username, comment } = req.body;
+  comments.push({
+    id: uuid(),
+    username: username,
+    comment: comment,
+  });
+  res.redirect('/comments');
+});
 
 app.get('/', (req, res) => {
   res.render('comments/home');
