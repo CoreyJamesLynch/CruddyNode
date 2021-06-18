@@ -11,11 +11,15 @@
       action="/comments"
       method="post"
     >
+      <h1>New Comment</h1>
       <section>
-        <input type="text" placeholder="Enter your username" />
+        <label for="username">Enter Your Username</label>
+        <input name="username" type="text" />
       </section>
+      <br />
       <section>
-        <textarea name="comment" id="comment-textarea" cols="30" rows="10"></textarea>
+        <label for="comment">Enter Your Comment</label>
+        <textarea name="comment" cols="30" rows="10"></textarea>
       </section>
       <button>Submit</button>
     </form>
