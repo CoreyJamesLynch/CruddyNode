@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comment</title>
   </head>
-  <body></body>
+  <body>
+    <div>
+      <h1><%=requestedComment.username%> comments:</h1>
+      <p><%= requestedComment.comment %></p>
+      <a href="/comments">Back</a>
+    </div>
+  </body>
 </html>
-
-<!--     <div style="display: flex">
-      <form action="/comments/<%= comment.id %>/edit?_method=PATCH " method="GET">
-        <button disabled>Edit</button>
-      </form>
-      <form action="/comments/<%= comment.id %>/delete?_method=DELETE " method="POST">
-        <button disabled>Delete</button>
-      </form>
-    </div>-->
