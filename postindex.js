@@ -52,6 +52,13 @@ app.get('/comments/show/:id', (req, res) => {
   res.render('comments/show', { requestedComment });
 });
 
+// need to get the form
+app.get('/comments/new', (req, res) => {
+  res.render('comments/new')
+})
+
+// need to post the form information
+
 app.get('/', (req, res) => {
   res.render('comments/home');
 });
