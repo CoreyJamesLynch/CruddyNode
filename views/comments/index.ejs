@@ -12,7 +12,7 @@
     <form method="GET" action="/comments/show/<%= comment.id %>/">
       <button>View Comment</button>
     </form>
-    <form method="GET" action="/comments/edit/">
+    <form method="GET" action="/comments/edit/<%= comment.id %>/">
       <button>Edit Comment</button>
     </form>
     <% } %>
