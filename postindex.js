@@ -34,20 +34,6 @@ let comments = [
   },
 ];
 
-app.get('/comments/show/:id', (req, res) => {
-  const { id } = req.params;
-  const requestedComment = comments.find((comment) => comment.id === id);
-  res.render('comments/show', { requestedComment });
-});
-
-// delete
-// filter comment from array by it's id
-// redirect back to index page
-
-app.get('/comments/new', (req, res) => {
-  res.render('comments/new');
-});
-
 app.post('/comments', (req, res) => {
   const { username, comment } = req.body;
   comments.push({
@@ -58,10 +44,24 @@ app.post('/comments', (req, res) => {
   res.redirect('/comments');
 });
 
+app.get('/comments', (req, res) => {
+  res.render('comments/index', { comments });
+});
+
+app.get('/comments/new', (req, res) => {
+  res.render('comments/new');
+});
+
 app.get('/comments/edit/:id', (req, res) => {
   const { id } = req.params;
   const editedComment = comments.find((comment) => comment.id === id);
   res.render('comments/edit', { editedComment });
+});
+
+app.get('/comments/:id', (req, res) => {
+  const { id } = req.params;
+  const requestedComment = comments.find((comment) => comment.id === id);
+  res.render('comments/show', { requestedComment });
 });
 
 app.patch('/comments/:id', (req, res) => {
@@ -72,8 +72,10 @@ app.patch('/comments/:id', (req, res) => {
   res.redirect('/comments');
 });
 
-app.get('/comments', (req, res) => {
-  res.render('comments/index', { comments });
+app.delete('/comments/:id', (req, res) => {
+  const { id } = req.params;
+  comments = comments.filter((comment) => comment.id !== id);
+  res.redirect('/comments');
 });
 
 app.get('/', (req, res) => {
