@@ -4,9 +4,9 @@ const app = express();
 const path = require('path');
 const { v4: uuid } = require('uuid');
 
-app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -42,8 +42,18 @@ let comments = [
   },
 ];
 
+app.get('/comments', (req, res) => {
+  res.render('comments/index', { comments });
+});
+
+app.get('/comments/show/:id', (req, res) => {
+  const { id } = req.params;
+  const requestedComment = comments.find((comment) => comment.id === id);
+  res.render('comments/show', { requestedComment });
+});
+
 app.get('/', (req, res) => {
-  res.render('comments/index');
+  res.render('comments/home');
 });
 
 app.listen(3000, () => {
