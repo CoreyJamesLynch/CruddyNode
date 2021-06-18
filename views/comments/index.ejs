@@ -12,8 +12,11 @@
     <form method="GET" action="/comments/show/<%= comment.id %>/">
       <button>View Comment</button>
     </form>
+    <form method="GET" action="/comments/edit/">
+      <button>Edit Comment</button>
+    </form>
     <% } %>
-    <div style="margin-top: 100px;">
+    <div style="margin-top: 100px">
       <form action="/comments/new/" method="GET">
         <button>Add Comment</button>
       </form>
