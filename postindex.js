@@ -40,13 +40,6 @@ app.get('/comments/show/:id', (req, res) => {
   res.render('comments/show', { requestedComment });
 });
 
-// get edit form
-app.get('/comments/edit/:id', (req, res) => {
-  res.render('/comments/edit');
-});
-
-// post edited comment to comments
-
 // delete
 // filter comment from array by it's id
 // redirect back to index page
@@ -62,6 +55,20 @@ app.post('/comments', (req, res) => {
     username: username,
     comment: comment,
   });
+  res.redirect('/comments');
+});
+
+app.get('/comments/edit/:id', (req, res) => {
+  const { id } = req.params;
+  const editedComment = comments.find((comment) => comment.id === id);
+  res.render('comments/edit', { editedComment });
+});
+
+app.patch('/comments/:id', (req, res) => {
+  const { id } = req.params;
+  const { edit_text_area } = req.body;
+  const editedComment = comments.find((comment) => comment.id === id);
+  editedComment.comment = edit_text_area;
   res.redirect('/comments');
 });
 
