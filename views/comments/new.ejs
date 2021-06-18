@@ -6,9 +6,17 @@
     <title>Create New Comment</title>
   </head>
   <body>
-    <form action="/comments" method="post">
-      <input type="text" placeholder="Enter your username" />
-      <textarea name="comment" id="comment-textarea" cols="30" rows="10"></textarea>
+    <form
+      style="display: block; margin-left: auto; margin-right: auto; margin-top: 25%; width: 40%"
+      action="/comments"
+      method="post"
+    >
+      <section>
+        <input type="text" placeholder="Enter your username" />
+      </section>
+      <section>
+        <textarea name="comment" id="comment-textarea" cols="30" rows="10"></textarea>
+      </section>
       <button>Submit</button>
     </form>
   </body>
