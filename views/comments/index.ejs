@@ -9,7 +9,7 @@
     <h1>Comment Index</h1>
     <% for(comment of comments){%>
     <p><b> <%= comment.username%> says: </b> <%= comment.comment %></p>
-    <form method="GET" action="/comments/show/<%= comment.id %>/">
+    <form method="GET" action="/comments/<%= comment.id %>/">
       <button>View Comment</button>
     </form>
     <form method="GET" action="/comments/edit/<%= comment.id %>/">
