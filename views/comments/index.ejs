@@ -7,9 +7,9 @@
   </head>
   <body>
     <h1>Comment Index</h1>
-    <% for(comment in comments){%> <% let currentComment = comments[comment] %>
-    <p><b> <%= currentComment.username%> says: </b> <%= currentComment.comment %></p>
-    <form method="GET" action="comments/<%= currentComment.id %>/show/">
+    <% for(comment of comments){%>
+    <p><b> <%= comment.username%> says: </b> <%= comment.comment %></p>
+    <form method="GET" action="/comments/show/<%= comment.id %>/">
       <button>View Comment</button>
     </form>
     <% } %>
